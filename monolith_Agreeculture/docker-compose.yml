@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  mongo:
+    container_name: mongodb_container
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27018:27017"
+
+  mono-agree: 
+    build: .
+    environment:
+      DATABASE_URI: "mongodb+srv://denipanji:KOKIOonGVDN4jXNI@agreeculture.go1tj6u.mongodb.net/cart-service"
+    depends_on:
+      - mongo
+    ports:
+      - "9001:9001"
+    restart: always
